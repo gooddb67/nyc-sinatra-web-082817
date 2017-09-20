@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <form action="/figures/<%= @figure.id %>" method="POST">
+      <input id="hidden" value="patch" name="_method" type="hidden">
+      Figure Name: <input type="text" id="figure_name" value="<%=@figure.name %>" name="figure[name]"></br>
+      Existing Titles:
+        <%Title.all.each do |title|%>
+          <input type="checkbox" name="figure[title_ids][]" id="<%=title.id%>" value="<%=title.id%>" <%='checked' if @figure.titles.include?(title) %>  ><%=title.name%></input>
+        <%end%>
+
+        </br>
+        </br>
+
+        New Title: <input type="text" id="new_title" name="title[name]"></br>
+      </br>
+      </br>
+
+        Existing Landmarks:
+         <% Landmark.all.each do |landmark| %>
+           <input type="checkbox" name="figure[landmark_ids][]" id="<%=landmark.id %>"
+           value="<%=landmark.id%>" <%='checked' if @figure.landmarks.include?(landmark) %>   ><%=landmark.name%></input>
+         <%end%>
+
+       </br>
+     </br>
+
+        New Landmark Name: <input type="text" id="new_landmark" name="landmark[name]"></br>
+        Year Completed: <input type="text" id="year_completed" name="landmark[year_completed]"></br>
+        <input type="submit" value="Edit Figure">
+    </form>
+  </body>
+</html>
+
+<!-- {figure => {
+  name => "Trump",
+  title_ids => ["1", "2"],
+  landmark_ids => ["1", "2"]
+},
+title => {
+  name => "President"
+}
+landmark => {
+  name => "Trump Tower"
+  year_completed => "1985"
+
+}
+
+} -->

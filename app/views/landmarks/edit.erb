@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <form action="/landmarks/<%= @landmark.id %>" method="POST">
+
+      <input id="hidden" value="patch" name="_method" type="hidden">
+
+        Name: <input type="text" id="name" value="<%=@landmark.name %>" name="landmark[name]"></br>
+
+        Year Completed: <input type="text" id="year_completed" value="<%=@landmark.year_completed %>" name="landmark[year_completed]"></br>
+
+        <input type="submit" value="Edit Landmark">
+    </form>
+  </body>
+</html>
+
+<!-- {figure => {
+  name => "Trump",
+  title_ids => ["1", "2"],
+  landmark_ids => ["1", "2"]
+},
+title => {
+  name => "President"
+}
+landmark => {
+  name => "Trump Tower"
+  year_completed => "1985"
+
+}
+
+} -->
